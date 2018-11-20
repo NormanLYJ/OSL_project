@@ -1,0 +1,97 @@
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1050; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.22);
+    border-radius: 6px;
+
+    /* Modal Content */
+    .modal-content {
+        background-color: $white-color;
+        margin: auto;
+        padding: 30px;
+        padding-bottom: 0;
+        border: none;
+        width: 650px;
+
+        .modal-body{
+          padding:0;
+          padding-bottom: 30px;
+
+          .slimScroll{
+            height: 190px !important;
+          }
+
+          .separator{
+            border-bottom: 1px solid $light-grayish-blue-color3;
+          }
+
+          h4{
+            color: $dark-grayish-blue-color3;
+            font-weight: $fw-500;
+            margin-bottom: 20px;
+          }
+          .custom-checkbox{
+            margin-bottom: 20px;
+            padding-left: 2px;
+
+            label{
+              color: $very-dark-grayish-blue-color;
+              font-size: $fs-12;
+              font-weight: $fw-400;
+              margin-bottom: 0;
+            }
+          }
+          .secondary-heading{
+            padding-top: 15px;
+
+            .pull-right{
+              .custom-checkbox{
+                margin-top: -3px;
+              }
+            }
+          }
+          ul{
+            margin-bottom: 0;
+          }
+        }
+    }
+    .modal-footer{
+      border-top: 0;
+      margin-left: -30px;
+      margin-right: -30px;
+      background:$light-grayish-blue-color;
+      padding-right: 30px;
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+
+      .btn-tertiary{
+        color:$dark-grayish-blue-color3;
+        .close {
+          background: transparent;
+          border: 0;
+          font-weight:$fw-400;
+          font-size:$fs-14;
+          color:$dark-grayish-blue-color3;
+          text-decoration: none;
+          opacity: 1;
+        }
+        &:hover{
+          color:$dark-grayish-blue-color3;
+        }
+        &:active, &:focus{
+          box-shadow:none;
+          color:$dark-grayish-blue-color3;
+        }
+      }
+    }
+}

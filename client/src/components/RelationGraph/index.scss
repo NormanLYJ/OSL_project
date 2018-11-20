@@ -1,0 +1,46 @@
+
+.graphWrapper{
+    padding: 20px;
+  }
+  .informationWrapper{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding: 20px;
+    min-height: 500px;
+    margin: 20px;
+  
+  }
+  
+  .topbarWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 4em;
+    background: rgb(28, 49, 69);
+    color: #f2be35;
+    font-size: 14px;
+    font-weight: 600;
+    button{
+      font-size: 12px;
+      margin-right:10px;
+    }
+  }
+  .userCtrl{
+    margin-right: 30px;
+  
+    img, i {
+      cursor: pointer;
+    }
+  
+    img {
+      margin-left: 20px;
+    }
+  }

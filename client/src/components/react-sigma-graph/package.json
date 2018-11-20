@@ -1,0 +1,37 @@
+{
+  "name": "react-sigma-graph",
+  "version": "0.0.13",
+  "license": "MIT",
+  "description": "A react component to easily make sigma graph visualizations.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yeastgenome/react-sigma-graph.git"
+  },
+  "main": "build/index.js",
+  "peerDependencies": {
+    "react": "^16.3.0"
+  },
+  "dependencies": {
+    "d3": "v3.5.17",
+    "sigma": "1.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "build": "webpack"
+  },
+  "author": {
+    "name": "Travis Sheppard",
+    "email": "travisksheppard@gmail.com"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.5.1",
+    "uglifyjs-webpack-plugin": "^1.2.7",
+    "webpack": "^2.6.1"
+  }
+}

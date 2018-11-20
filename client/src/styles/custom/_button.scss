@@ -1,0 +1,91 @@
+button{
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+button:focus {outline:0;}
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus{
+  outline: none;
+  box-shadow: none;
+}
+.btn-primary {
+  background: linear-gradient(to bottom, #66d7e9, #36aece);
+  border-radius: 16px;
+  color: $very-dark-grayish-blue-color;
+  display: inline-block;
+  padding: 1px;
+  text-decoration: none;
+  border: 0;
+
+  span {
+    background:$light-grayish-blue-color;
+    display: block;
+    padding: 3px 10px;
+    border-radius: 16px;
+    border: 0;
+    font-size: $fs-14;
+    font-weight: $fw-400;
+    line-height: 16px;
+  }
+  &:hover{
+      color: $very-dark-grayish-blue-color;
+  }
+  &:focus{
+    color: $very-dark-grayish-blue-color;
+    outline: none !important;
+  }
+  &:active{
+    background: linear-gradient(to bottom, #66d7e9, #36aece);
+    border-radius: 16px;
+    color: $very-dark-grayish-blue-color !important;
+    display: inline-block;
+    padding: 1px;
+    text-decoration: none;
+    border: 0;
+
+    span{
+      background:$light-grayish-blue-color;
+      display: block;
+      padding: 3px 10px;
+      border-radius: 16px;
+      border: 0;
+      font-size: $fs-14;
+      font-weight: $fw-400;
+      line-height: 16px;
+    }
+  }
+}
+.btn-secondary{
+  border-radius: 16px;
+  background-image: linear-gradient(to bottom, rgba(0, 162, 155, 0.69), #33a9de);
+  color:$white-color;
+  font-weight:$fw-400;
+  padding: 0 20px;
+  line-height:24px;
+  font-size:$fs-14;
+  box-shadow: none;
+  border: 0;
+  &:hover{
+    color:$white-color;
+  }
+  &:active, &:focus{
+    background-image: linear-gradient(to bottom, rgba(0, 162, 155, 0.69), #33a9de);
+    color:$white-color;
+    box-shadow:none;
+  }
+}
+.btn-tertiary{
+    background: transparent;
+    border: 0;
+    font-weight:$fw-400;
+    font-size:$fs-14;
+    color:$dark-grayish-blue-color3;
+    &:hover{
+      color:$dark-grayish-blue-color3;
+    }
+    &:active, &:focus{
+      box-shadow:none;
+      color:$dark-grayish-blue-color3;
+    }
+}

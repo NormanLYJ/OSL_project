@@ -1,0 +1,13 @@
+.labelItemWrapper{
+    border: 1px solid #b5c2cf;
+    padding: 2px 5px;
+    border-radius: 20px;
+    font-size: 11px;
+    margin: 2px 0;
+    display: inline-block;
+    text-align: left;
+    .noName{
+        font-size: 9px; 
+        color: red;
+    }
+}

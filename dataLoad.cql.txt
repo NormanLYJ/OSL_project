@@ -1,0 +1,143 @@
+
+
+//deleting all nodes and edges
+MATCH (n)
+WITH n LIMIT 10000
+OPTIONAL MATCH (n)-[r]->()
+DELETE n,r;
+
+//deleting entire db:
+//$NEO4J_HOME/data/databases:
+//rm -rf graph.db
+
+
+//import from csv
+LOAD CSV WITH HEADERS 
+	FROM "https://s3-ap-southeast-1.amazonaws.com/yuejun.offshoreleaks.com/paradise_papers.nodes.entity.csv" as line 
+WITH line LIMIT 10
+MERGE (e:Entity {
+	id: TOINT(line.node_id), 
+	name: line.name,
+    jurisdiction: line.jurisdiction,
+    jurisdiction_description: line.jurisdiction_description,
+    incorporation_date: line.incorporation_date,
+    sourceID: line.sourceID,
+    valid_until: line.valid_until,
+    note: line.note
+	});
+
+
+LOAD CSV WITH HEADERS 
+	FROM "https://s3-ap-southeast-1.amazonaws.com/yuejun.offshoreleaks.com/paradise_papers.nodes.officer.csv" as line 
+WITH line LIMIT 10
+MERGE (o:Officer {
+    id: TOINT(line.node_id),
+    name: line.name,
+    sourceID: line.sourceID,
+    valid_until: line.valid_until
+});
+
+LOAD CSV WITH HEADERS 
+	FROM "https://s3-ap-southeast-1.amazonaws.com/yuejun.offshoreleaks.com/paradise_papers.nodes.intermediary.csv" as line 
+WITH line LIMIT 10
+MERGE (i:Intermediary {
+    id: TOINT(line.node_id),
+    name: line.name,
+    country_code: line.country_codes,
+    country: line.countries,
+    sourceID: line.sourceID,
+    valid_until: line.valid_until
+});
+
+LOAD CSV WITH HEADERS 
+	FROM "https://s3-ap-southeast-1.amazonaws.com/yuejun.offshoreleaks.com/paradise_papers.nodes.address.csv" as line 
+WITH line LIMIT 10
+MERGE (a:Address {
+    id: TOINT(line.node_id),
+    name: line.name,
+    country_code: line.country_codes,
+    country: line.countries,
+    sourceID: line.sourceID,
+    valid_until: line.valid_until
+});
+
+
+//run below as a batch
+
+MERGE  (a1: Address {id: 81014062})
+MERGE  (a2: Address {id: 81014060}) 
+MERGE  (a3: Address {id: 81014068})
+MERGE  (a4: Address {id: 81014067})
+MERGE  (a5: Address {id: 81014057})
+MERGE  (a6: Address {id: 81014055})
+
+MERGE (e1: Entity {id: 85008437})
+MERGE (e2: Entity {id: 85008436})
+MERGE (e3: Entity {id: 85008435}) 
+MERGE (e4: Entity {id: 85008434}) 
+MERGE (e5: Entity {id: 85008433}) 
+MERGE (e6: Entity {id: 85004928})
+MERGE (e7: Entity {id: 85004927})
+MERGE (e8: Entity {id: 85008431})
+
+MERGE (o1:Officer {id: 59178341})
+MERGE (o2:Officer {id: 59160036})
+MERGE (o3:Officer {id: 59187868})
+MERGE (o4:Officer {id: 59119499})
+MERGE (o5:Officer {id: 59092213})
+MERGE (o6:Officer {id: 59127837})
+
+MERGE (i1: Intermediary {id: 80010095})
+MERGE (i2: Intermediary {id: 80007709})
+MERGE (i3: Intermediary {id: 80008235})
+MERGE (i4: Intermediary {id: 80000191})
+MERGE (i5: Intermediary {id: 80000392})
+MERGE (i6: Intermediary {id: 80011301})
+
+MERGE (e1) - [ra1:Registered_Address {relation: 'business address'}] -> (a1)
+MERGE (e1) - [ra2:Registered_Address {relation: 'administration address'}] -> (a2)
+MERGE (e1) - [oo1:Officer_Of {relation: 'secretary of'}] -> (e2)
+MERGE (e1) - [oo2:Officer_Of {relation: 'trustee of'}] -> (e3)
+MERGE (e1) - [oo3:Officer_Of {relation: 'trustee of'}] -> (e4)
+MERGE (e1) - [ct1:Connected_To {relation: 'connected to'}] -> (e5)
+MERGE (e1) - [io1:Intermediary_Of {relation: 'registered agent of'}] -> (e6)
+
+MERGE (e2) - [ra3:Registered_Address {relation: 'business address'}] -> (a3)
+MERGE (e2) - [oo4:Officer_Of {relation: 'secretary of'}] -> (e4)
+MERGE (e2) - [oo5:Officer_Of {relation: 'proxy of'}] -> (e3)
+MERGE (e2) - [ct2:Connected_To {relation: 'connected to'}] -> (e5)
+MERGE (e2) - [io2:Intermediary_Of {relation: 'registered agent of'}] -> (e6)
+
+MERGE (e3) - [ra4:Registered_Address {relation: 'business address'}] -> (a5)
+MERGE (e3) - [oo6:Officer_Of {relation: 'owner of'}] -> (e4)
+MERGE (e3) - [oo7:Officer_Of {relation: 'proxy of'}] -> (e8)
+MERGE (e3) - [ct3:Connected_To {relation: 'connected to'}] -> (e6)
+MERGE (e3) - [io3:Intermediary_Of {relation: 'registered agent of'}] -> (e5)
+
+MERGE (o1) - [oo8:Officer_Of {relation: 'managing director of'}] -> (e4)
+MERGE (o1) - [oo9:Officer_Of {relation: 'lega representative of'}] -> (e2)
+MERGE (o1) - [oo10:Officer_Of {relation: 'share holder of'}] -> (e5)
+MERGE (o1) - [ra5:Registered_Address {relation: 'mailing address'}] -> (a3)
+
+MERGE (o2) - [oo11:Officer_Of {relation: 'managing director of'}] -> (e1)
+MERGE (o2) - [oo12:Officer_Of {relation: 'lega representative of'}] -> (e2)
+MERGE (o2) - [oo13:Officer_Of {relation: 'managing director of'}] -> (e5)
+MERGE (o2) - [ra6:Registered_Address {relation: 'business address'}] -> (a4)
+MERGE (o2) - [sn1:Same_Name_As {relation: 'same name as'}] -> (o5)
+
+MERGE (i1) - [io4:Intermediary_Of {relation: 'registrar and transfer agent of'}] -> (e4)
+MERGE (i1) - [io5:Intermediary_Of {relation: 'registrar and transfer agent of'}] -> (e5)
+MERGE (i1) - [io6:Intermediary_Of {relation: 'registrar and transfer agent of'}] -> (e6)
+MERGE (i1) - [oo14:Officer_Of {relation: 'treasurer of'}] -> (e1)
+MERGE (i1) - [oo15:Officer_Of {relation: 'share holder of'}] -> (e2)
+
+MERGE (i2) - [io7:Intermediary_Of {relation: 'registrar and transfer agent of'}] -> (e2)
+MERGE (i2) - [io8:Intermediary_Of {relation: 'registrar and transfer agent of'}] -> (e5)
+MERGE (i2) - [oo16:Officer_Of {relation: 'treasurer of'}] -> (e1)
+MERGE (i2) - [oo17:Officer_Of {relation: 'share holder of'}] -> (e2)
+MERGE (i2) - [ra7:Registered_Address {relation: 'mailing address'}] -> (a2)
+
+MERGE (a3) <- [ra8:Registered_Address {relation: 'mailing address'}] - (e2)
+MERGE (a4) <- [ra9:Registered_Address {relation: 'residential address'}] - (e3)
+MERGE (a5) <- [ra10:Registered_Address {relation: 'mailing address'}] - (e4)
+MERGE (a6) <- [ra11:Registered_Address {relation: 'residential address'}] - (e5);
