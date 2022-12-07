@@ -28,9 +28,9 @@
     "npm": "1.2.x"
   },
   "dependencies": {
-    "body-parser": "^1.15.0",
+    "body-parser": "^1.20.1",
     "errorhandler": "^1.4.3",
-    "express": "^4.13.4",
+    "express": "^4.18.2",
     "hat": ">=0.0.3",
     "install": "^0.8.1",
     "jade": "^1.11.0",
