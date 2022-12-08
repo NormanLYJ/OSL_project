@@ -30,7 +30,7 @@
   "dependencies": {
     "body-parser": "^1.15.0",
     "errorhandler": "^1.4.3",
-    "express": "^4.13.4",
+    "express": "^4.17.3",
     "hat": ">=0.0.3",
     "install": "^0.8.1",
     "jade": "^1.11.0",
